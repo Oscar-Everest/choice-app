@@ -1,0 +1,224 @@
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    height: 100vh;
+    font: 1.6rem Helvetica;
+    
+}
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    height: 100%;
+}
+.header{
+    grid-area: header;
+    background-color: #5375f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    padding: 1rem;
+}
+.brand{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.header-links{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+.header a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.trend{
+    font-size: 1.4rem;
+    color: #808080
+}
+a:hover{
+ color: #ff0000
+}
+
+.main{
+    grid-area: main;
+}
+.footer{
+    grid-area: footer;
+    background-color: #5375f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff
+}
+
+/*home screen*/
+.infos{
+display: flex;
+justify-content: space-evenly;
+flex: 0 1 34rem;
+height: 50%;
+flex-wrap: wrap;
+margin-left: -4rem;
+}
+.person-info{
+    
+    flex-direction: column;
+    justify-content: space-between;
+   line-height: 4rem;
+}
+.person-image{
+    max-width: 30rem;
+    max-height: 30rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    outline: none;
+}
+.image-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1rem;
+    margin-bottom: 0.5rem;
+   
+}
+.profile-image{
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;
+}
+.image-and-profile{
+    margin: 2rem;
+    margin-left: 1rem;
+}
+.profile-dot, select{
+    border: none;
+    background: none;
+    color: #0000ff;
+    outline: none;
+    width: 2rem;
+}
+.profile-pix{
+    max-width: 5rem;
+    max-height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 10rem;
+}
+.input-post{
+    border: none;
+    color: #0000ff;
+    font-weight: bold;
+    border-radius: 2rem;
+    outline-color: #ff0000;
+}
+.newsarea{
+   
+    height: 8rem;
+    margin-bottom: 1rem;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 0.2rem #f5eded solid;
+    width: 30rem;
+   
+}
+.image-footer{
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 4rem;
+   border-bottom: 0.2rem #f5eded solid;
+   width: 30rem;
+}
+form input[type="submit"]{
+    border: none;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+}
+
+.person-name{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #5375f0;
+  font-variant-caps: all-petite-caps;
+}
+.person-position{
+    color: #808080
+}
+.person-party{
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-variant-caps: all-petite-caps;
+}
+ul li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #5375f0;
+   
+}
+.infos a:hover{
+    color: #800080
+}
+.image-footer a:hover{
+padding: .5rem;
+transform: rotateX(20deg);
+transition: linear 2s;
+overflow: hidden;
+}
+/*sidebar*/
+
+.aside-bar{
+    font-size: 2.5rem;
+    padding: 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+.sidebar{
+    position: fixed;
+    transform: translateX(-30rem);
+    width: 30rem;
+    background: #fafafa;
+    height: 100%;
+}
+
+.sidebar a{
+    line-height: 5rem;
+}
+.sidebar.open{
+    transform: translateX(0);
+    transition: all 0.5s
+}
+.closeMenu{
+border-radius: 50%;
+border: none;
+height: 3rem;
+width: 3rem;
+font-size: 2rem;
+padding-top: 0;
+cursor: pointer;
+outline: none;
+position: absolute;
+right: 0.5rem;
+top: 1.5rem;
+box-shadow: 0.8px 0.8px 0.8px 0.8px red;
+
+}
+.closeMenu:hover{
+background: #c0c0c0c0
+}

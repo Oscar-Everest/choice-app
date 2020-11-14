@@ -1,0 +1,224 @@
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { detailsContent } from '../actions/contentActions';
+
+Amazona last video session = 5:27:34
+
+
+function userScreen(props) {
+
+    const contentDetails = useSelector(state => state.contentDetails);
+    const {content, loading, error } = contentDetails;
+    const dispatch = useDispatch;
+    
+    useEffect(() =>  {
+      dispatch(detailsContent());
+      return () => {
+       //
+      };
+    }, [])
+  const openModal = () =>{
+    document.querySelector(".comment").classList.add("open")
+}
+const closeModal = () =>{
+    document.querySelector(".comment").classList.remove("open")
+}
+
+    return (
+       <div className="grid-container2">
+          <header className="header2">
+           
+          <div ><Link to="/" className="user-nav">back</Link></div>
+              <button className="user-nav" >
+                &#9776;
+              </button>
+           
+          </header>
+          {
+             loading ? <div>Loading...</div> : error ?
+             <div>{error}</div> :                
+             <main className="main2">
+             <header className="user-header">
+                <div className="banner-image">
+                  <img className="banner-image2" src={content.bannerImage} alt="mainPhoto"/>
+                </div>
+               <ul className="banner-image-footer">
+                 <li className="">
+                 <div className="user-opinion">
+                   <img  className="user-pix" src={content.profileImage} alt="profilePhoto"/>
+                   <button>View</button>
+      
+                   </div>
+                 <div  className="name-handle">
+                  <div className="user-name">{content.profileName}</div>
+                  <div className="user-handle">{content.userHandle}</div>
+                  </div>
+                <div className="user-about">
+                  <div>About: 
+                    <span className="user-about-info">{content.info}</span>
+                  </div>
+                  <div>Location: 
+                  <span className="user-about-info"> {content.userLocation}</span>
+                    </div>
+                  <div>
+                    Birthday: 
+                    <span className="user-about-info">{content.birthday}</span>
+                    </div>
+                  <div>
+                    Joined: 
+                    <span className="user-about-info">{content.joined}</span>
+                    </div>
+                </div>
+                 </li>
+                
+                  <div className="user-analysis">
+                  <li>
+                    <button className="admiring1">Admiring</button>
+                     <div className="num-admiring"> {content.Admiring}</div>
+                    </li> 
+                    <li>
+                    <button className="admiring2">Admiriers</button>
+                    <div className="num-admiriers"> {content.Admiriers}</div>
+                    </li> 
+                   <li >Approvals
+                  <div className="num-admiring">{content.approve}</div>
+                   </li>
+                   <li >Rejections
+                  <div className="num-admiring">{content.reject}</div>
+                   </li>
+                    </div>
+                    
+                 </ul>
+               
+               </header>
+               <div className="user-page">
+               
+                     <table>
+                         <thead>
+                         <div className="profile-img">
+                             <div className="pix-name">
+                            <div className="picture">
+                                
+                            <img className="profile-pix" src={content.profileImage} alt="profile-pix"/>
+                           
+                            </div>
+                            <table>
+                                <tbody>
+                               
+                                    <tr className="profile-name">
+                                        <td>
+                                        <Link className="profile-name" to={"/handle/" + content.userHandle}>
+                                            {content.profileName}
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                    <tr className="userHandle">
+                                   <td>
+                                   <Link className="userHandle" to={"/handle/" + content.userHandle}>
+                                       {content.userHandle}
+                                       </Link>
+                                       </td>
+                                    </tr>
+                                    <tr  >
+                                        <td>
+                                        
+                                         <textarea  className="textArea" name="entered-text" placeholder="What's on your mind">
+                                        
+                                         {content.textArea}
+                                       
+                                         </textarea>
+                                        </td>
+                                    </tr>
+                                    <tr className="main-and-image">
+                                        <td>
+                                        <Link className="main-and-image" to={"/handle/" + content.userHandle}>
+                                            <img className="mainImage"  src={content.mainImage} alt="mainPhoto"/>
+                                           </Link>
+                                        </td>
+                                       
+                                    </tr>
+                                    <div>
+                                    <form className="image-footer">
+      
+                                 <div className="comment-btn"  onClick={openModal}>
+                                     comment
+                                     </div>
+                                     <div className="comment">
+                                     <form>
+                                         <textarea className="comment-modal" name="comment"></textarea>
+                                         <div className="modal-button">
+                                         <button className="modal-cancel"  onClick={closeModal}>cancel</button>
+                                         <input className="modal-post" type="submit"  onClick={closeModal} value="post"/>
+                                         </div>
+                                     </form>
+                                    
+                                     </div>
+                                 
+                                    
+                                  <input type="submit" name="share" value="share"/>
+                                  
+                                  
+                                   <input type="submit" name="approve" value="approve"/>
+                                   
+                                  
+                                   <input type="submit" name="reject" value="reject"/>
+                                   
+                                       
+                               </form> 
+                                    </div>
+                              
+                                </tbody>
+                            </table>
+                            
+                            </div>
+                            <div>
+                            <form className="option">
+                                  <select name="opinion">
+                                      <option>what's your opinion</option>
+                                      <option value="fair">fair</option>
+                                      <option value="good">good</option>
+                                      <option value="best">best</option>
+                                      <option value="unaccepted">unaccepted</option>
+                                      <option value="undecided">Undecided</option>
+                                  </select>
+                                 <br/>
+                                  <input className="input-post" type="submit" name="submit" value="post"/>
+                                 
+                               </form>
+                               
+                            </div>
+                      
+                        <div className="rating-approve">
+                        <div className="person-name">
+                      <Link to={"/" + content.profileName}>{content.brandName}</Link>
+                   </div>
+                  <div className="person-position">{content.position}</div>
+                  <div className="person-state">{content.level}</div>
+                  <div className="person-party">{content.platform}</div>
+                <div className="person-state"> {content.fair} : {content.numFair}</div>
+                  <div className="person-aproval">A: {content.approve}</div>
+                  <div className="person-aproval">R: {content.reject}</div>
+                 
+                 
+                        </div>
+                         </div>
+                         <br/><br/><br/><br/><br/>
+                        
+                         </thead>
+                     </table>
+            
+              </div>
+              
+             </main>
+           }
+         
+      
+       <footer className="footer2">
+         hello
+       </footer>
+        </div>
+      
+    )
+}
+export default userScreen;
